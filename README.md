@@ -21,21 +21,25 @@ ITNavigationController.m //实现简介第3点
 1. 简介第1点的实现代码
 ```
 toVC.view.frame = self.toBeganFrame;
-[contrainerView addSubview:toVC.view]; //新的view一定要自己addSubView
+[contrainerView addSubview:toVC.view]; //(1)  
 [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
     fromVC.view.frame = self.fromEndFrame;
     toVC.view.frame = contrainerView.frame;
 } completion:^(BOOL finished) {
-    [fromVC.view removeFromSuperview];//原来的view一定要自己remove
-    [transitionContext completeTransition:YES];//一定要通知 完成
+    [fromVC.view removeFromSuperview];//(2)
+    [transitionContext completeTransition:YES];//(3)
 }];
 ```
+(1)新的view一定要自己addSubView
+(2)原来的view一定要自己remove
+(3)一定要通知 完成
 2. 简介第3点实现代码
 ```
-self.navDelegate = [[ITNavigationDelegate alloc] init];//在ARC模式下，由于self.delegate是assige的，导致此处创建的ITNavigationDelegate会在方法最后被释放掉，所以一定要自己创建的一个属性来保存
+self.navDelegate = [[ITNavigationDelegate alloc] init];//
 ((ITNavigationDelegate*)self.navDelegate).delegateType = DelegateTypeBackSlash;
 self.delegate = self.navDelegate;
 ```
+在ARC模式下，由于self.delegate是assige的，导致此处创建的ITNavigationDelegate会在方法最后被释放掉，所以一定要自己创建的一个属性来保存
 
 
 具体信息查看代码https://github.com/itianzhu/TransitionDemo.git
