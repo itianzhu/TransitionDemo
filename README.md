@@ -1,5 +1,7 @@
 iOS7中自定义ViewController切换动画
 一、简介
+
+
 1. 实现UIViewControllerAnimatedTransitioning协议，这个协议里的方法具体实现动画
 2. 实现UINavigationControllerDelegate协议，这个协议里的的方法返回实现上一个协议的实例
 3. 子类UINavigationController,这个就是具有自定义切换功能的实例，所有在这个实例中进行的push、pop都会有自定义的动画
@@ -14,6 +16,8 @@ ITNavigationController.m //实现简介第3点
 
 
 三、注意事项
+
+
 1. 简介第1点的实现代码
 ```
 toVC.view.frame = self.toBeganFrame;
@@ -34,7 +38,4 @@ self.delegate = self.navDelegate;
 ```
 
 
-具体信息查看代码
-
-
-https://github.com/itianzhu/TransitionDemo.git
+具体信息查看代码https://github.com/itianzhu/TransitionDemo.git
