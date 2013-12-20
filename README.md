@@ -21,9 +21,7 @@ ITNavigationController.m //实现简介第3点
 1. 简介第1点的实现代码
 ```
 toVC.view.frame = self.toBeganFrame;
-[contrainerView addSubview:toVC.view]; //(1)
-
-
+[contrainerView addSubview:toVC.view];/*(1)*/
 [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
     fromVC.view.frame = self.fromEndFrame;
     toVC.view.frame = contrainerView.frame;
